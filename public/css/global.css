@@ -1,0 +1,39 @@
+.sidebar1{
+    position: fixed;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+@font-face{
+    font-family: 'gotham';
+    src: url('./GothamBold.ttf');
+}
+
+
+@font-face{
+    font-family: 'gotham2';
+    src: url('./Gotham-UltraItalic.otf');
+}
+
+
+@font-face{
+    font-family: 'gotham3';
+    src: url('./GothamLight.ttf');
+}
+
+ @media (min-width:600px){
+    .sidebar{
+        visibility:visible;
+    }
+    
+} 
+
+.index{
+    z-index: 1;
+}
+*{
+    font-family: 'gotham';
+}
