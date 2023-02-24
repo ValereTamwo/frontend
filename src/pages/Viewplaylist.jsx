@@ -14,7 +14,7 @@ import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
 // import cardSwiperMobile from '../components/cardswiperMobile'
-function Home(props) {
+function Viewplaylist(props) {
 
 
 
@@ -60,21 +60,26 @@ function Home(props) {
                           mobile ?
                               <>
                                   <div className='d-flex flex-column gap-5'>
-                                      <MusicList title={'Decouvrez les hits du tendance du moment'} />
+                                      
+                                      {/* <MusicList /> */}
+                                      <LoadPlay />
+                                      <MusicTable/>
                                     <PlaylistCard />
-                                    {/* <LoadPlay/> */}
+                                    
                                 </div>
                                 
                               </>
                               : <>
-                                  <MusicList title={'Decouvrez les hits du tendance du moment'}/>
+                                  {/* <MusicList/> */}
+                                  <LoadPlay />
+                                  <MusicTable/>
                                   <CardSwiperDestop />
-                                  {/* <LoadPlay/> */}
+                                  
                               </>
                       }
                       
                   </div>
-                  {/* <MusicTable/> */}
+                  
                   </div>
               </div>
           </div>
@@ -82,4 +87,4 @@ function Home(props) {
   )
 }
 
-export default Home
+export default Viewplaylist

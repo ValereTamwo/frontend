@@ -2,13 +2,13 @@ import React from 'react'
 import LogBar from './LogBar'
 import arbre from '../images/arbre.jpg'
 
-function LoadPlay() {
+function LoadPlay(props) {
     return (
         <>
-             <div className=' col-12 col justify-content-end d-flex'>
+             {/* <div className=' col-12 col justify-content-end d-flex'>
                           
                             <LogBar />                
-                      </div>
+                      </div> */}
             <div className='container-fluid border-bottom border-light border-1 '>
                 <div className='row'>
                     <div className='col-3 p-2'>
@@ -19,7 +19,7 @@ function LoadPlay() {
                             PLAYLIST
                         </p>
                         <p className='fw-bold text-light' style={{fontSize:'60px'}}>
-                            Fresh Breeze
+                            {props.name || 'Fresh Breeze'}
                         </p>
                         <p className='text-light' style={{fontSize:'10px'}}>valere tamwo</p>
                     </div>

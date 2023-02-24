@@ -20,7 +20,7 @@ function MusicTable() {
                     <th>1</th>
                     <th>
                         <div class="col-12 col-md-3">    
-                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="100%" height="50" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
+                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="210%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
                          </div>
                     </th>
                     <th>123 likes</th>
@@ -30,7 +30,7 @@ function MusicTable() {
                     <th>1</th>
                     <th>
                         <div class="col-12 col-md-3">    
-                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="100%" height="50" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
+                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="210%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
                          </div>
                     </th>
                     <th>123 likes</th>
@@ -40,7 +40,7 @@ function MusicTable() {
                     <th>1</th>
                     <th>
                         <div class="col-12 col-md-3">    
-                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="100%" height="50" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
+                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="210%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
                          </div>
                     </th>
                     <th>123 likes</th>
@@ -50,7 +50,7 @@ function MusicTable() {
                     <th>1</th>
                     <th>
                         <div class="col-12 col-md-3">    
-                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="100%" height="50" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
+                            <iframe style={{borderRadius:'12px'}} src="https://open.spotify.com/embed/track/3vr0IE1pCtiMfoHNl84MYX?utm_source=generator" title='1' width="210%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">   </iframe>
                          </div>
                     </th>
                     <th>123 likes</th>

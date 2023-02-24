@@ -5,16 +5,13 @@ import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
 import { useState,useEffect } from 'react'
 
-import { playlistDesktop } from '../components/PlaylistCard'
-
 import CardSwiperDestop from '../components/CardSwiperDestop'
 import Profil from '../components/Profil'
 import MusicList from '../components/MusicList'
 import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
-import MusicTable from '../components/MusicTable'
 // import cardSwiperMobile from '../components/cardswiperMobile'
-function Home(props) {
+function Bibliotheque(props) {
 
 
 
@@ -60,21 +57,26 @@ function Home(props) {
                           mobile ?
                               <>
                                   <div className='d-flex flex-column gap-5'>
-                                      <MusicList title={'Decouvrez les hits du tendance du moment'} />
+                                  <LoadPlay name={'Ta Bibliotheque Personnalisee' } />
+                                      <MusicList title={'tes hits Recents'} />
+                                       <MusicList title={'Albums par Artistes Ecoutes'} />
                                     <PlaylistCard />
-                                    {/* <LoadPlay/> */}
+                                  
                                 </div>
                                 
                               </>
                               : <>
-                                  <MusicList title={'Decouvrez les hits du tendance du moment'}/>
+                                  <LoadPlay name={'Ta Bibliotheque Personnalisee' } />
+                                  <MusicList title={'Tes Hits Recents'} />
+                                <MusicList title={'Albums par Artistes Ecoutes'} />
+                                  
                                   <CardSwiperDestop />
-                                  {/* <LoadPlay/> */}
+                                 
                               </>
                       }
                       
                   </div>
-                  {/* <MusicTable/> */}
+                
                   </div>
               </div>
           </div>
@@ -82,4 +84,4 @@ function Home(props) {
   )
 }
 
-export default Home
+export default Bibliotheque
