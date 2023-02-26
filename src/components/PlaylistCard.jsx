@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 export function PlaylistCard(props) {
     return (
         <Link to='/viewplaylist' className='nav-link text-dark ' >
-            <div className='card  p-2' style={{ height: '230px' , backgroundColor:'beige'}}>
+            <div className='card  p-2' style={{ height: '230px' , backgroundColor:''}}>
           <img className='card-img-top' src={img} alt='' />
           <div className='card-body'>
               <h6 className='card-title '> Fresh Breeze</h6>
@@ -39,31 +39,32 @@ function Playlist(props) {
                     <Swiper
                     effect={"cards"}
                     grabCursor={true}
-                    modules={[EffectCards]}
-                    className="mySwiper"
+                    modules={[]}
+                        className="mySwiper"
+                        navigation={true}
                     >
                         <SwiperSlide>
-                            <div className='  ' style={{height:'90%',width:'200px'}}>
+                            <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <div className='  ' style={{height:'100%',width:'200px'}}>
+                            <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <div className='  ' style={{height:'100%',width:'200px'}}>
+                            <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <div className='  ' style={{height:'100%',width:'200px'}}>
+                            <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <div className='  ' style={{height:'100%',width:'200px'}}>
+                            <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
                         </SwiperSlide>

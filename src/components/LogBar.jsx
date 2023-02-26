@@ -7,10 +7,10 @@ function LogBar() {
 
     return (
     <>
-        <button className='btn navbar-toggler' data-bs-toggle='collapse' data-bs-target='#btn'>
+        {/* <button className='btn navbar-toggler' data-bs-toggle='collapse' data-bs-target='#btn'>
             <span className='navbar-toggler-icon' ></span>
-        </button>   
-      <div className='d-flex gap-4 flex-md-row   ' id='btn'>
+        </button>    */}
+      <div className='d-flex gap-4 flex-md-row  mt-2 ' id='btn'>
           <button className='btn btn-secondary'>Passer a premium</button>
           <button className='btn btn-light' onClick={() => {
             dispach(authuser(''))
