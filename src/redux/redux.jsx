@@ -38,10 +38,30 @@ const AuthUserSlice = createSlice({
 })
 
 
+const TokenSlice = createSlice({
+    name: 's_token',
+    initialState: '',
+    reducers: {
+        getToken: (state,action) => {
+            const hash = window.location.hash;
+            let token = window.localStorage.getItem('s_token');
+            state = token;
+            if (!token && hash) {
+                token = hash.substring(1).split('&').find(elem => elem.startsWith("access_token")).split('=')[1]
+                window.localStorage.setItem('s_token', token)
+                state = token;
+                console.log(token)
+        }
+        } 
+    }
+})
+
 export const  { authuser} = AuthUserSlice.actions
+export const { getToken } = TokenSlice.actions
 
 export const store = configureStore({
     reducer: {
-        authenticate : AuthUserSlice.reducer
+        authenticate: AuthUserSlice.reducer,
+        token:TokenSlice.reducer
     }
 })

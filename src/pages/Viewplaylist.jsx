@@ -3,7 +3,7 @@ import LogBar from '../components/LogBar'
 import NavMobile from '../components/NavMobile'
 import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 
 import { playlistDesktop } from '../components/PlaylistCard'
 
@@ -13,11 +13,39 @@ import MusicList from '../components/MusicList'
 import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
+import Player from '../components/Player'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Viewplaylist(props) {
 
+const song = [
+    {
+      id:1,
+      name: 'I am there for you',
+      url:'https://docs.google.com/uc?export=download&id=1Yi-9oUlk701ke6MQGvC9zYtokz-eAXVD',
+      artist:'Justin Beiber feat Alonzo'
+    },
+    {
+      id:2,
+      name: ' Memories',
+      url:'https://docs.google.com/uc?export=download&id=1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
+      artist:'Marrons - track'
+    },
+     {
+      id:3,
+      name: 'The continent of the planet with the alphabet',
+      url:'https://docs.google.com/uc?export=download&id=1YdqVqia2368BAKh4xMAGHIRYWE8cEW9f',
+      artist:'tutu mimi'
+    }
+  ]
+  const audioelm = useRef()
+
+  const [music, setMusic] = useState(song)
+  const [isplaying, setIsplaying] = useState(false)
+  const [currentSong, setCurrentSong] = useState(song[0])
 
 
+    
+    
   const [authRx, setAuthRx] = useState({})
 
     const authUserRedux = useSelector((state) => state.authenticate  )
@@ -29,9 +57,30 @@ function Viewplaylist(props) {
             setmobile(true);
         }
     }
+
+    const onPlaying = () => {
+        const duration = audioelm.current.duration;
+        const currenttime = audioelm.current.currentTime
+        setCurrentSong({ ...currentSong, "progress": currenttime / duration * 100, "lenght": duration })
+        
+        if (currenttime === duration) {
+            let index = song.findIndex(song => song.name === currentSong.name)
+            setIsplaying(false)
+            setCurrentSong(song[index + 1])
+            setTimeout(()=>{setIsplaying(true)},200)
+        }
+        // console.log(currentSong)
+    }
+
     useEffect(() => {
         getWindowsWidth()
-    },[mobile])
+        if (isplaying) {
+            audioelm.current.play()
+        } else {
+            audioelm.current.pause()
+        }
+    }, [mobile, isplaying])
+    
   return (
      
           <div className=''>
@@ -64,7 +113,10 @@ function Viewplaylist(props) {
                                       {/* <MusicList /> */}
                                       <LoadPlay />
                                       <MusicTable/>
-                                    <PlaylistCard />
+                                      <PlaylistCard />
+                                  {/* <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} /> */}
+                                      
+                                  {/* <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} /> */}
                                     
                                 </div>
                                 
@@ -72,8 +124,10 @@ function Viewplaylist(props) {
                               : <>
                                   {/* <MusicList/> */}
                                   <LoadPlay />
-                                  <MusicTable/>
+                                  <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <CardSwiperDestop />
+                                  <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} />
+                                  <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
                                   
                               </>
                       }

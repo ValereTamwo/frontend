@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CreatePlaylistModal from './CreatePlaylistModal'
 // import font from '../fonts/GothamBold.ttf'
 
 function SIdeBar() {
     return (
         <>
                     
-                    <div className='  w-20  w-md-100  sticky-top p-3' style={{ height: '100vh', backgroundColor: 'black',width:'300px' }}>
+                    <div className='  w-20  w-md-100   sticky-top p-3' style={{ height: '100vh', backgroundColor: 'black',width:'300px' }}>
                         <div className='container'>
                             <span className='w-100 h-100 p-2 bg-white rounded-circle me-2'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
@@ -15,8 +16,8 @@ function SIdeBar() {
                                     <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z"/>
                                 </svg>
                             </span>
-                            <span className='fw-bold  text-white fs-2'>
-                                Sonify
+                            <span className='fw-bold  text-white fs-4'>
+                                Music Sparks
                             </span>
                             <ul className='nav expand text-light'>
                                 <li className='nav-item mt-3'>
@@ -45,12 +46,13 @@ function SIdeBar() {
                                         </Link>
                                 </li>
                                 <li className='nav-item mt-5'>
-                                    <a href='/' className='nav-link'>                                       
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="beige" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
-                                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                        <span className='ms-2 text-light view'> Creer une playlist</span>
-                                     </a>
+                                    <button  className=' btn nav-link' data-bs-toggle='modal' data-bs-target='#create'>                                       
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="beige" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                            <span className='ms-2 text-light view'> Creer une playlist</span>
+                                     </button>
+                                     <CreatePlaylistModal/>
                                 </li>
                                 <li className='nav-item '>
                                     <Link to='/viewplaylist' className='nav-link'>                                       

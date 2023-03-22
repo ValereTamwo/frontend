@@ -9,7 +9,7 @@ function LoadPlay(props) {
                           
                             <LogBar />                
                       </div> */}
-            <div className='container-fluid border-bottom border-light border-1 mb-4 '>
+            <div className='container-fluid border-bottom border-light border-1 mb-2 '>
                 <div className='row'>
                     <div className='col-3 p-2'>
                         <img className='img-fluid' src={arbre}  alt='playlist'/>
