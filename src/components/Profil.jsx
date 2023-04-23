@@ -23,7 +23,7 @@ function Profil() {
         <button className='btn navbar-toggler' data-bs-toggle='collapse' data-bs-target='#btn'>
             <span className='navbar-toggler-icon' ></span>
         </button>   
-      <div className='d-flex gap-4 flex-md-row   ' id='btn'>
+      <div className='d-flex  gap-4 flex-md-row   ' id='btn'>
           <button className='btn btn-secondary'>Passer a premium</button>
               <button className='btn btn-light '>{user.userName||'Valere Tamwo'}</button>
         </div>

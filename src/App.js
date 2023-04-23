@@ -5,7 +5,7 @@ import Bibliotheque from './pages/Bibliotheque';
 import Home from './pages/Home';
 import Viewplaylist from './pages/Viewplaylist';
 import { store } from './redux/redux';
-
+import SignIn from './pages/SignIn';
 import { BrowserRouter,Routes,route, Route } from 'react-router-dom';
 import Research from './pages/Research';
 
@@ -47,7 +47,8 @@ function App() {
           <Route exact path='/' element={<Home />}></Route>
           <Route exact path='/biblio' element={<Bibliotheque />}></Route>
           <Route exact path='/viewplaylist' element={<Viewplaylist />}></Route>
-          <Route exact path='/research' element={<Research/>}></Route>
+          <Route exact path='/research' element={<Research />}></Route>
+          <Route exact path='/signIn' element={<SignIn/>}></Route>
 
         </Routes>
       </Provider>

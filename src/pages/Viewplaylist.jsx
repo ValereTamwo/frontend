@@ -27,7 +27,7 @@ const song = [
     {
       id:2,
       name: ' Memories',
-      url:'https://docs.google.com/uc?export=download&id=1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
+      url:'1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
       artist:'Marrons - track'
     },
      {

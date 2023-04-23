@@ -38,6 +38,8 @@ const AuthUserSlice = createSlice({
 })
 
 
+
+
 const TokenSlice = createSlice({
     name: 's_token',
     initialState: '',
@@ -55,6 +57,8 @@ const TokenSlice = createSlice({
         } 
     }
 })
+
+
 
 export const  { authuser} = AuthUserSlice.actions
 export const { getToken } = TokenSlice.actions
