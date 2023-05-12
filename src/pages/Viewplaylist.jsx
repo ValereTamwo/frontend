@@ -119,13 +119,17 @@ const song = [
                                   {/* <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} /> */}
                                     
                                 </div>
-                                
+                                    <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} />
+                                    <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
+                                  
                               </>
                               : <>
                                   {/* <MusicList/> */}
                                   <LoadPlay />
                                   <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
-                                  <CardSwiperDestop />
+                                  <div className='' style={{ marginBottom:'100px'}}>
+                                  <CardSwiperDestop />          
+                                </div>
                                   <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} />
                                   <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
                                   

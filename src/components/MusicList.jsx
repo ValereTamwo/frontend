@@ -3,7 +3,7 @@ import { PlaylistCard } from './PlaylistCard'
 function MusicList(props) {
   return (
       <>
-          <div className='container-fluid mb-4'>
+          <div className='container-fluid md-mb-4'>
               <h4 className='text-light index'> {props.title}</h4>
               <div className='row '>
                   <div className='col-md-2  col-6 p-2 ' style={{ height: '100px'}} >

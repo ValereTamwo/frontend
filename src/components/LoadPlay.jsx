@@ -18,7 +18,7 @@ function LoadPlay(props) {
                         <p className='text-light' style={{fontSize:'10px'}} >
                             PLAYLIST
                         </p>
-                        <p className='fw-bold text-light' style={{fontSize:'4vh'}}>
+                        <p className='fw-bold text-light' style={{fontSize:'8vh'}}>
                             {props.name || 'Fresh Breeze'}
                         </p>
                         <p className='text-light' style={{fontSize:'10px'}}>valere tamwo</p>

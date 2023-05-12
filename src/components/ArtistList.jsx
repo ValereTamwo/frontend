@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import ariana from '../images/star/arianagrande.jpeg';
+import ariana from '../images/star/ariana.jpeg';
 import justin from '../images/star/justinbeiber.jpeg'
 import halsey from '../images/star/halsey.jpeg'
 import maroon from '../images/star/maroons.jpeg'
@@ -16,11 +16,15 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import './style/styles.css'
 
+export function Image() {
+    return({ariana,justin,halsey,maroon,zara,ed,catty})
+}
+
 function ArtistList() {
   return (
      <>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={5}
         spaceBetween={10}
         pagination={{
           clickable: true,

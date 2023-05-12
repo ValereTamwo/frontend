@@ -15,16 +15,26 @@ import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
 import Player from '../components/Player'
 import wel from '../images/720x480_.jpg'
+import ArtistList from '../components/ArtistList'
+import { Image } from '../components/ArtistList'
+import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Home(props) {
 
 
-
+    const img = {
+  'display': 'block',
+  'width': '100%',
+  'height': '100%',
+  'object-fit': 'cover'
+}
+    const res = Image()
+    const pexel_api = "emiNERkoveUChvp9jEmCKVs68PDTfHhF50IY9m4ZmWOKWhuDCHU9r2vI"
     const [authRx, setAuthRx] = useState({});
     const [token, setToken] = useState('');
     const authUserRedux = useSelector((state) => state.authenticate)
     const [mobile, setmobile] = useState(false)
-
+    const [data ,setData] = useState([]) 
      
 
     function getWindowsWidth() {
@@ -32,19 +42,17 @@ function Home(props) {
         if (width <= 764) {
             setmobile(true);
         }
-    }
+    }   
+ 
     useEffect(() => {
-        getWindowsWidth()
+        const FetchData = async() => {
+           const res = await axios.get('http://localhost/Kmeans/connect.php')
+            setData(res.data); 
+        } 
+        FetchData()
+        getWindowsWidth()  
 
-        const hash = window.location.hash;
-        let token = window.localStorage.getItem('s_token');
-        setToken(token)
-        if (!token && hash) {
-            token = hash.substring(1).split('&').find(elem => elem.startsWith("access_token")).split('=')[1]
-            window.localStorage.setItem('s_token', token)
-            setToken(token)
-            console.log(token)
-        }
+        console.log(data);
 
     }, [mobile])
   
@@ -93,7 +101,9 @@ function Home(props) {
                                                        <div className='container'>
                                                       <div className='row'>
                                                           <div className=''>
-                                                              <img src={wel} className='img-fluid' alt='welcome'/>
+                                                                  {/* <img src={wel} className='img-fluid' alt='welcome'/> */}
+                                                            <ArtistList />
+                                                                  
                                                           </div>
                                                       </div>
                                                   </div>
@@ -127,19 +137,28 @@ function Home(props) {
                                               <dif className='col-md-8 col-12 '>
                                                   <div className='container'>
                                                       <div className='row'>
-                                                          <div className=''>
+                                                          {/* <div className=''>
                                                               <img src={wel} alt='welcome'/>
-                                                          </div>
+                                                          </div> */}
+                                                          <ArtistList />
+                                                          {/* 
+                                                          <div className='col-3' style={{height:'130px',width:'130px'}}><img alt='artist' src={res.justin} style={{display:'block',width:'100%',height:'100%',objectFit:'cover'}} className='img-fluid'/></div>
+                                                          <div className='col-3' style={{height:'130px',width:'130px'}}><img alt='artist' src={res.ariana} style={{display:'block',width:'100%',height:'100%',objectFit:'cover'}} className='img-fluid'/></div>
+                                                          <div className='col-3' style={{height:'130px',width:'130px'}}><img alt='artist' src={res.maroon} style={{display:'block',width:'100%',height:'100%',objectFit:'cover'}} className='img-fluid'/></div>
+                                                          <div className='col-3' style={{height:'130px',width:'130px'}}><img alt='artist' src={res.halsey} style={{display:'block',width:'100%',height:'100%',objectFit:'cover'}} className='img-fluid'/></div>
+                                                          <div className='col-3' style={{height:'130px',width:'130px'}}><img alt='artist' src={res.ed} style={{display:'block',width:'100%',height:'100%',objectFit:'cover'}} className='img-fluid'/></div> */}
+
+                                                          
                                                       </div>
                                                   </div>
-                                                  <span className='d-flex justify-content-center' style={{ fontSize:'45px',color:'#FFF480'}}>Venez vibrer au rythme de la musique </span>
+                                                  <span className='d-flex justify-content-center' style={{ fontSize:'30px',color:'#FFF480'}}>Venez vibrer au rythme de la musique </span>
                                                   
                                               </dif>
                                           </div>
                                       </div>
                                       
                                   </div>
-                                  <MusicList title={'Decouvrez les hits du tendance du moment'}/>
+                                  <MusicList title={'Decouvrez les hits du tendance du moment'} data={data} />
                                   <CardSwiperDestop />
                                   {/* <Player/> */}
                                   {/* <LoadPlay/> */}

@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 export function PlaylistCard(props) {
     return (
         <Link to='/viewplaylist' className='nav-link text-dark ' >
-            <div className='card  p-2' style={{ height: '230px' , backgroundColor:''}}>
+            <div className='card  p-2' style={{ height: '230px',width:'170px' , backgroundColor:''}}>
           <img className='card-img-top' src={img} alt='' />
           <div className='card-body'>
               <h6 className='card-title '> Fresh Breeze</h6>
@@ -32,7 +32,7 @@ export function PlaylistCard(props) {
 function Playlist(props) {
     return (
         <>
-            <div className='container'>
+            <div className='container '>
                 <div className='row gap-0 '>
                     <p className='fs-3 text-light'> Recommendes pour Herman Motcheyo</p>
             
