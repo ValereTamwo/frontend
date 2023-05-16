@@ -14,8 +14,15 @@ import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
 import Player from '../components/Player'
+import { useContext } from 'react'
+import { ContextData } from '../contexts/dataContext'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Viewplaylist(props) {
+
+    const {popular,fetchData , musics} = useContext(ContextData);
+    const id = useParams()
 
 const song = [
     {
@@ -39,9 +46,9 @@ const song = [
   ]
   const audioelm = useRef()
 
-  const [music, setMusic] = useState(song)
+  const [music, setMusic] = useState([])
   const [isplaying, setIsplaying] = useState(false)
-  const [currentSong, setCurrentSong] = useState(song[0])
+  const [currentSong, setCurrentSong] = useState({})
 
 
     
@@ -56,6 +63,7 @@ const song = [
         if (width <= 764) {
             setmobile(true);
         }
+      
     }
 
     const onPlaying = () => {
@@ -73,12 +81,23 @@ const song = [
     }
 
     useEffect(() => {
+        fetchData()
+        // fetchMusic()
+         const RetrieveMusic = async (id) => {
+            await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
+                .then((res) => setMusic(res.data))
+        }
+        RetrieveMusic(id.playlist_id)
         getWindowsWidth()
+        console.log(id.playlist_id)
+
         if (isplaying) {
             audioelm.current.play()
         } else {
             audioelm.current.pause()
         }
+
+
     }, [mobile, isplaying])
     
   return (
@@ -112,14 +131,14 @@ const song = [
                                       
                                       {/* <MusicList /> */}
                                       <LoadPlay />
-                                      <MusicTable/>
+                                      <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong}/>
                                       <PlaylistCard />
                                   {/* <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} /> */}
                                       
                                   {/* <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} /> */}
                                     
                                 </div>
-                                    <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} />
+                                    <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id}`} ref={audioelm} onTimeUpdate={onPlaying} />
                                     <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
                                   
                               </>
@@ -128,10 +147,10 @@ const song = [
                                   <LoadPlay />
                                   <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
-                                  <CardSwiperDestop />          
+                                  <CardSwiperDestop data={popular} />          
                                 </div>
-                                  <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} />
-                                  <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
+                                  <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id}`} ref={audioelm} onTimeUpdate={onPlaying} />
+                                  <Player songs={music} setCurrentSong={setCurrentSong} setSong={setMusic} isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm}      />
                                   
                               </>
                       }

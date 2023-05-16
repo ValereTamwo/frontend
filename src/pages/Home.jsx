@@ -4,38 +4,26 @@ import NavMobile from '../components/NavMobile'
 import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
 import { useState,useEffect } from 'react'
-
-import { playlistDesktop } from '../components/PlaylistCard'
-
 import CardSwiperDestop from '../components/CardSwiperDestop'
 import Profil from '../components/Profil'
 import MusicList from '../components/MusicList'
-import LoadPlay from '../components/LoadPlay'
-import { useSelector } from 'react-redux'
-import MusicTable from '../components/MusicTable'
-import Player from '../components/Player'
-import wel from '../images/720x480_.jpg'
 import ArtistList from '../components/ArtistList'
 import { Image } from '../components/ArtistList'
 import axios from 'axios'
-// import cardSwiperMobile from '../components/cardswiperMobile'
+import { ContextData } from '../contexts/dataContext'
+import { useContext } from 'react'
+
+
 function Home(props) {
 
+    const {popular,fetchData} = useContext(ContextData);
 
-    const img = {
-  'display': 'block',
-  'width': '100%',
-  'height': '100%',
-  'object-fit': 'cover'
-}
     const res = Image()
     const pexel_api = "emiNERkoveUChvp9jEmCKVs68PDTfHhF50IY9m4ZmWOKWhuDCHU9r2vI"
-    const [authRx, setAuthRx] = useState({});
     const [token, setToken] = useState('');
-    const authUserRedux = useSelector((state) => state.authenticate)
     const [mobile, setmobile] = useState(false)
-    const [data ,setData] = useState([]) 
      
+
 
     function getWindowsWidth() {
         let width = window.screen.width;
@@ -45,16 +33,10 @@ function Home(props) {
     }   
  
     useEffect(() => {
-        const FetchData = async() => {
-           const res = await axios.get('http://localhost/Kmeans/connect.php')
-            setData(res.data); 
-        } 
-        FetchData()
-        getWindowsWidth()  
-
-        console.log(data);
-
-    }, [mobile])
+        getWindowsWidth() 
+        fetchData()
+        console.log(popular)
+    },[mobile])
   
   return (
      
@@ -114,7 +96,7 @@ function Home(props) {
                                       </div>                                          
                                       </div>
                                       <div className=' container ' style={{height:'1px' , backgroundColor:'#FEDC47'}}></div>
-                                      <MusicList title={'Decouvrez les hits du tendance du moment'} />
+                                      <MusicList title={'Decouvrez les hits du tendance du moment'} data={ popular } />
                                     <PlaylistCard />
                                     {/* <LoadPlay/> */}
                                 </div>
@@ -158,8 +140,8 @@ function Home(props) {
                                       </div>
                                       
                                   </div>
-                                  <MusicList title={'Decouvrez les hits du tendance du moment'} data={data} />
-                                  <CardSwiperDestop />
+                                  <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular}/>
+                                  <CardSwiperDestop data={popular} />
                                   {/* <Player/> */}
                                   {/* <LoadPlay/> */}
                               </>

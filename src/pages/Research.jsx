@@ -11,10 +11,12 @@ import MusicList from '../components/MusicList'
 import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import { Form } from 'react-router-dom'
+import { useContext } from 'react'
+import { ContextData } from '../contexts/dataContext'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Research(props) {
 
-
+    const { popular, fetchData_all } = useContext(ContextData);
 
   const [authRx, setAuthRx] = useState({})
 
@@ -29,6 +31,7 @@ function Research(props) {
     }
     useEffect(() => {
         getWindowsWidth()
+        fetchData_all()
     },[mobile])
   return (
      
@@ -73,7 +76,7 @@ function Research(props) {
                                           
                                       </button>
                                       </form>
-                                      <MusicList title={'L\'integralite des nos Hits'} />
+                                      <MusicList title={'L\'integralite des nos Hits'} data={popular} />
                                        {/* <MusicList title={'Albums par Artistes Ecoutes'} /> */}
                                     {/* <PlaylistCard /> */}
                                   
@@ -96,7 +99,7 @@ function Research(props) {
                                           
                                       </button>
                                       </form>
-                                  <MusicList title={'L\'integralite des nos Hits'} />
+                                  <MusicList title={'L\'integralite des nos Hits'} data={popular} />
                                 {/* <MusicList title={'Albums par Artistes Ecoutes'} /> */}
                                   
                                   {/* <CardSwiperDestop /> */}

@@ -18,7 +18,7 @@ import { EffectCoverflow, Pagination } from "swiper";
 export default function CardSwiperDestop(props) {
   return (
     <>
-      <h3 className="text-light">Recommandes pour Herman Motcheyo</h3>
+      <h3 className="text-light">Recommandes pour Valere Tamwo</h3>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -35,12 +35,25 @@ export default function CardSwiperDestop(props) {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
+        {
+          props.data.map((item) => {
+            return (
+              <>
+                <SwiperSlide>
+                  <div className='  ' style={{height:'100%',width:'200px'}}>
+                    <PlaylistCard data={item} />
+                  </div>
+              </SwiperSlide>
+              </>
+            )
+          })
+        }
+{/* 
       <SwiperSlide>
         <div className='  ' style={{height:'100%',width:'200px'}}>
             <PlaylistCard/>
-                </div>
-        
-    </SwiperSlide>
+        </div>
+      </SwiperSlide>
             <SwiperSlide>
             <div className='' style={{height:'100%',width:'200px'}}>
                 <PlaylistCard/>
@@ -56,7 +69,7 @@ export default function CardSwiperDestop(props) {
                 <div className='' style={{height:'100%',width:'200px'}}>
                       <PlaylistCard/>                   
                   </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
 </Swiper>
     </>
   );

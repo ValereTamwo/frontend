@@ -8,7 +8,7 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
     }
 
     const nextSong = () => {
-        let index = songs.findIndex((song) => song.name === currentSong.name)
+        let index = songs.findIndex((song) => song.track_id === currentSong.track_id)
         if (index === songs.lenght - 1) {
             setCurrentSong(songs[0])
             setIsplaying(false)
@@ -19,7 +19,7 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
         setTimeout(()=>{setIsplaying(true)},200)
     }
      const prevSong = () => {
-        let index = songs.findIndex(song => song.name === currentSong.name)
+        let index = songs.findIndex(song => song.track_id === currentSong.track_id)
         if (index ===  0) {
             setCurrentSong(songs[songs.lenght - 1])
             setIsplaying(false)
@@ -34,7 +34,7 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
           <div className='container text-light   fixed-bottom   ' style={{backgroundColor:'#333' ,left:'20vw'}}>
               <div className='row'>
                   <div className='col-12  p-2'>
-                      <span className='d-flex justify-content-center'>  {currentSong.name} : _ <span>{currentSong.artist}</span></span>
+                      <span className='d-flex justify-content-center'>  {currentSong.track_name} : _ <span>{currentSong.track_artist}</span></span>
                   
                   </div>
                   <div className='col-12    '>

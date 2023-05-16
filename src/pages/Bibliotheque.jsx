@@ -10,10 +10,12 @@ import Profil from '../components/Profil'
 import MusicList from '../components/MusicList'
 import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
+import { ContextData } from '../contexts/dataContext'
+import { useContext } from 'react'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Bibliotheque(props) {
 
-
+    const {popular,fetchData,fetchData_all } = useContext(ContextData);
 
   const [authRx, setAuthRx] = useState({})
 
@@ -27,6 +29,7 @@ function Bibliotheque(props) {
         }
     }
     useEffect(() => {
+        fetchData()
         getWindowsWidth()
     },[mobile])
   return (
@@ -58,19 +61,19 @@ function Bibliotheque(props) {
                               <>
                                   <div className='d-flex flex-column gap-5'>
                                   <LoadPlay name={'Ta Bibliotheque Personnalisee' } />
-                                      <MusicList title={'tes hits Recents'} />
-                                       <MusicList title={'Albums par Artistes Ecoutes'} />
+                                      <MusicList title={'tes hits Recents'} data={popular} />
+                                       <MusicList title={'Albums par Artistes Ecoutes'} data={popular} />
                                     <PlaylistCard />
                                   
                                 </div>
                                 
                               </>
                               : <>
-                                  <LoadPlay name={'Ta Bibliotheque Personnalisee' } />
-                                  <MusicList title={'Tes Hits Recents'} />
-                                <MusicList title={'Albums par Artistes Ecoutes'} />
+                                  <LoadPlay name={'Ta Bibliotheque Personnalisee' }  />
+                                  <MusicList title={'Tes Hits Recents'} data={popular}/>
+                                <MusicList title={'Albums par Artistes Ecoutes'} data={popular}/>
                                   
-                                  <CardSwiperDestop />
+                                  {/* <CardSwiperDestop data={popular} /> */}
                                  
                               </>
                       }

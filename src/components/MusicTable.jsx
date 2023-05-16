@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
-import { useRef } from 'react'
+import { useRef,useEffect } from 'react'
 import '../App.css'
-function MusicTable({music,setIsplaying,setCurrentSong,isplaying}) {
+function MusicTable({music,setIsplaying,setCurrentSong,isplaying,data}) {
 
     const playlist = ['1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
        '1MstoEzsdCszbytYQuSHicAncyHuzVHuc',
@@ -11,8 +11,6 @@ function MusicTable({music,setIsplaying,setCurrentSong,isplaying}) {
        '1Yi-9oUlk701ke6MQGvC9zYtokz-eAXVD',
       '1Yc7d5OA2Vvejckc4yBk3JrZy4pEudFEJ']
   
-
-
     return ( 
       <div className='container-fluid'>
         <div className='row'>
@@ -48,9 +46,9 @@ function MusicTable({music,setIsplaying,setCurrentSong,isplaying}) {
                                           autoPlay
                                           controls
                                         /> */}
-                                        <span>{song.name} </span><br></br>
+                                        <span>{song.track_name} </span><br></br>
                                   <span style={{ fontSize: '10px' }}>
-                                    {song.artist}
+                                    {song.track_artist}
                                     <svg  xmlns="http://www.w3.org/2000/svg" style={{marginLeft:'5px'}} width="16" height="16" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
                                       <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
                                       <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
@@ -89,7 +87,8 @@ function MusicTable({music,setIsplaying,setCurrentSong,isplaying}) {
                                </tr>
                             )
                         })
-                   } 
+                } 
+              
                    
                 
  

@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import { ContextData } from '../contexts/dataContext';
+import { useContext } from 'react';
 import "./style.css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
@@ -14,14 +15,17 @@ import { Keyboard,Pagination,Navigation } from 'swiper';
 import "swiper/css/navigation";
 import { Link } from 'react-router-dom';
 
-export function PlaylistCard(props) {
+export function PlaylistCard({data}) {
     return (
-        <Link to='/viewplaylist' className='nav-link text-dark ' >
+        <Link to={`/viewplaylist/${data.playlist_id}`} className='nav-link text-dark ' >
             <div className='card  p-2' style={{ height: '230px',width:'170px' , backgroundColor:''}}>
           <img className='card-img-top' src={img} alt='' />
           <div className='card-body'>
-              <h6 className='card-title '> Fresh Breeze</h6>
-              <p className='card-text ' style={{fontSize:'10px'}} > Dadju , Niska , Black M (26 chansons) </p>
+                    <h6 className='card-title '>{ data.playlist_name}</h6>
+                   
+                    <p className='card-text ' style={{ fontSize: '12px' }} > {data.nb_track} chansons </p>
+                    <p className='card-text ' style={{ fontSize: '10px' }}>{data.playlist_subgenre}</p>
+                    
           </div>
             </div>
         </Link>
@@ -30,11 +34,12 @@ export function PlaylistCard(props) {
 }
 
 function Playlist(props) {
+    const { popular } = useContext(ContextData);
     return (
         <>
             <div className='container '>
                 <div className='row gap-0 '>
-                    <p className='fs-3 text-light'> Recommendes pour Herman Motcheyo</p>
+                    <p className='fs-3 text-light'> Recommendes pour Valere Tamwo</p>
             
                     <Swiper
                     effect={"cards"}
@@ -43,7 +48,18 @@ function Playlist(props) {
                         className="mySwiper"
                         navigation={true}
                     >
-                        <SwiperSlide>
+                        {popular.map((item) => {
+                            return (
+                                <>
+                                    <SwiperSlide>
+                                        <div className='  ' style={{height:'90%',width:'190px'}}>
+                                            <PlaylistCard data={item} />
+                                        </div>
+                                    </SwiperSlide>
+                                </>
+                            )
+                        })}
+                        {/* <SwiperSlide>
                             <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
@@ -67,7 +83,7 @@ function Playlist(props) {
                             <div className='  ' style={{height:'90%',width:'190px'}}>
                                 <PlaylistCard/>
                             </div>
-                        </SwiperSlide>
+                        </SwiperSlide> */}
                     </Swiper>  
                                   
                 </div>
