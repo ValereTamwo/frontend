@@ -48,14 +48,15 @@ function Playlist(props) {
                         className="mySwiper"
                         navigation={true}
                     >
-                        {popular.map((item) => {
+                        {popular.map((item,index) => {
                             return (
                                 <>
-                                    <SwiperSlide>
+                                    <SwiperSlide key={index} >
                                         <div className='  ' style={{height:'90%',width:'190px'}}>
                                             <PlaylistCard data={item} />
                                         </div>
                                     </SwiperSlide>
+                                
                                 </>
                             )
                         })}

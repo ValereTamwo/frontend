@@ -85,12 +85,13 @@ const song = [
         // fetchMusic()
          const RetrieveMusic = async (id) => {
             await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
-                .then((res) => setMusic(res.data))
-        }
+                .then((res) => { setMusic(res.data); })
+         }
+        // setCurrentSong(music[0])
         RetrieveMusic(id.playlist_id)
         getWindowsWidth()
         console.log(id.playlist_id)
-
+        // setCurrentSong(music[0])
         if (isplaying) {
             audioelm.current.play()
         } else {
@@ -145,13 +146,15 @@ const song = [
                               : <>
                                   {/* <MusicList/> */}
                                   <LoadPlay />
+                                  z
                                   <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
                                   <CardSwiperDestop data={popular} />          
-                                </div>
-                                  <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id}`} ref={audioelm} onTimeUpdate={onPlaying} />
-                                  <Player songs={music} setCurrentSong={setCurrentSong} setSong={setMusic} isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm}      />
+                                  </div>
+                                  <p>{currentSong.track_id}</p>
                                   
+                                  <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id }`} ref={audioelm} onTimeUpdate={onPlaying} />
+                                  <Player songs={music} setCurrentSong={setCurrentSong} setSong={setMusic} isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm}      />
                               </>
                       }
                       

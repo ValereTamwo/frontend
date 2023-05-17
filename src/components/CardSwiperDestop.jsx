@@ -36,11 +36,11 @@ export default function CardSwiperDestop(props) {
         className="mySwiper"
       >
         {
-          props.data.map((item) => {
+          props.data.map((item,index) => {
             return (
               <>
-                <SwiperSlide>
-                  <div className='  ' style={{height:'100%',width:'200px'}}>
+                <SwiperSlide key={index}> 
+                  <div  className='  ' style={{height:'100%',width:'200px'}}>
                     <PlaylistCard data={item} />
                   </div>
               </SwiperSlide>

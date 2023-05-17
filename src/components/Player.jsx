@@ -9,19 +9,20 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
 
     const nextSong = () => {
         let index = songs.findIndex((song) => song.track_id === currentSong.track_id)
-        if (index === songs.lenght - 1) {
+        if (index === songs.length - 1) {
             setCurrentSong(songs[0])
             setIsplaying(false)
             setTimeout(()=>{setIsplaying(true)},200)
         }
         setCurrentSong(songs[index + 1])
         setIsplaying(false)
-        setTimeout(()=>{setIsplaying(true)},200)
+        setTimeout(() => { setIsplaying(true) }, 200)
+        
     }
      const prevSong = () => {
         let index = songs.findIndex(song => song.track_id === currentSong.track_id)
         if (index ===  0) {
-            setCurrentSong(songs[songs.lenght - 1])
+            setCurrentSong(songs[songs.length - 1])
             setIsplaying(false)
             setTimeout(()=>{setIsplaying(true)},200)
         }
@@ -37,7 +38,7 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
                       <span className='d-flex justify-content-center'>  {currentSong.track_name} : _ <span>{currentSong.track_artist}</span></span>
                   
                   </div>
-                  <div className='col-12    '>
+                  <div className='col-12'>
                       <div className='container ' style={{width:`${currentSong.lenght}%` , height:'4px',cursor:"pointer"}}>
                           <div class="progress-stacked d-flex justify-content-start container bg-dark">
                             <div style={{width:`${currentSong.progress}%` , height:'2px',cursor:"pointer"}} class="progress" role="progressbar" aria-label="Segment one" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" >

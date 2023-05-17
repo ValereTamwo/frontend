@@ -37,7 +37,7 @@ function MusicTable({music,setIsplaying,setCurrentSong,isplaying,data}) {
                    {
                         music.map((song,index)=>{
                             return (
-                              <tr className=''>
+                              <tr className='' key={index}>
                                 <th>{index}</th>
                                      <th>
                                       {/* <div class="col-12 col-md-3 " style={{fontSize:'15px',fontWeight:'lighter'}}>   */}

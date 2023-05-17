@@ -7,13 +7,13 @@ function MusicList(props) {
               <h4 className='text-light index'> {props.title}</h4>
               <div className='row '>
                   
-                  {props.data.map((item) => {
+                  {props.data.map((item,index) => {
                       return (
-                          <>
-                             <div className='col-md-2  col-6 p-2 ' >
+                       
+                             <div className='col-md-2  col-6 p-2 ' key={index}>
                                   <PlaylistCard data={item}/>
                             </div> 
-                          </>
+                          
                       )
                       
                   })}
