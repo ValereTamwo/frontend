@@ -72,9 +72,9 @@ const song = [
         setCurrentSong({ ...currentSong, "progress": currenttime / duration * 100, "lenght": duration })
         
         if (currenttime === duration) {
-            let index = song.findIndex(song => song.name === currentSong.name)
+            let index = music.findIndex(song => song.track_id === currentSong.track_id)
             setIsplaying(false)
-            setCurrentSong(song[index + 1])
+            setCurrentSong(music[index + 1])
             setTimeout(()=>{setIsplaying(true)},200)
         }
         // console.log(currentSong)
@@ -153,7 +153,7 @@ const song = [
                                   </div>
                                   <p>{currentSong.track_id}</p>
                                   
-                                  <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id }`} ref={audioelm} onTimeUpdate={onPlaying} />
+                                  <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.id }`} ref={audioelm} onTimeUpdate={onPlaying} />
                                   <Player songs={music} setCurrentSong={setCurrentSong} setSong={setMusic} isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm}      />
                               </>
                       }
