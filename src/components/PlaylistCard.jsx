@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 export function PlaylistCard({data}) {
     return (
         <Link to={`/viewplaylist/${data.playlist_id}`} className='nav-link text-dark ' >
-            <div className='card  p-2' style={{ height: '230px',width:'170px' , backgroundColor:''}}>
+            <div className='card  p-2' style={{ height: '230px',width:'170px' , backgroundColor:'#fff'}}>
           <img className='card-img-top' src={img} alt='' />
           <div className='card-body'>
                     <h6 className='card-title '>{ data.playlist_name}</h6>

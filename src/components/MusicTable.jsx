@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { useRef,useEffect } from 'react'
 import '../App.css'
-function MusicTable({music,setIsplaying,setCurrentSong,isplaying,data}) {
+function MusicTable({music,setIsplaying,setCurrentSong,isplaying,data,track}) {
 
     const playlist = ['1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
        '1MstoEzsdCszbytYQuSHicAncyHuzVHuc',
@@ -10,6 +10,9 @@ function MusicTable({music,setIsplaying,setCurrentSong,isplaying,data}) {
        '1YdqVqia2368BAKh4xMAGHIRYWE8cEW9f',
        '1Yi-9oUlk701ke6MQGvC9zYtokz-eAXVD',
       '1Yc7d5OA2Vvejckc4yBk3JrZy4pEudFEJ']
+  if (track) {
+     music = music.filter((s)=>s.track_id===track)
+    }
   
     return ( 
       <div className='container-fluid'>

@@ -47,7 +47,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />}></Route>
           <Route exact path='/biblio' element={<Bibliotheque />}></Route>
-          <Route exact path='/viewplaylist/:playlist_id' element={<Viewplaylist />}></Route>
+          <Route exact path='/viewplaylist/:playlist_id/:track_id?' element={<Viewplaylist />}></Route>
           <Route exact path='/research' element={<Research />}></Route>
           <Route exact path='/signIn' element={<SignIn/>}></Route>
 

@@ -81,6 +81,8 @@ const song = [
     }
 
     useEffect(() => {
+
+     
         fetchData()
         // fetchMusic()
          const RetrieveMusic = async (id) => {
@@ -147,7 +149,7 @@ const song = [
                                   {/* <MusicList/> */}
                                   <LoadPlay />
                                   z
-                                  <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
+                                  <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
                                   <CardSwiperDestop data={popular} />          
                                   </div>
@@ -165,6 +167,7 @@ const song = [
           </div>
    
   )
+
 }
 
 export default Viewplaylist
