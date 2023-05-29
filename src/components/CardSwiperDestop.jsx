@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { pexels } from "./data";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -41,7 +41,7 @@ export default function CardSwiperDestop(props) {
               <>
                 <SwiperSlide key={index}> 
                   <div  className='  ' style={{height:'100%',width:'200px'}}>
-                    <PlaylistCard data={item} />
+                    <PlaylistCard data={item} url={pexels[index].src.tiny}/>
                   </div>
               </SwiperSlide>
               </>

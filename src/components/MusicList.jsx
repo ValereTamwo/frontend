@@ -1,5 +1,6 @@
 import React from 'react'
 import { PlaylistCard } from './PlaylistCard'
+import { pexels } from './data'
 function MusicList(props) {
   return (
       <>
@@ -11,7 +12,7 @@ function MusicList(props) {
                       return (
                        
                              <div className='col-md-2  col-6 p-2 ' key={index}>
-                                  <PlaylistCard data={item}/>
+                              <PlaylistCard data={item} url={pexels[index].src.tiny} />
                             </div> 
                           
                       )

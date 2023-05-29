@@ -147,7 +147,7 @@ const song = [
                               </>
                               : <>
                                   {/* <MusicList/> */}
-                                  <LoadPlay />
+                                  <LoadPlay id={id.playlist_id} />
                                   z
                                   <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
