@@ -4,9 +4,7 @@ import NavMobile from '../components/NavMobile'
 import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
 import { useState,useEffect,useRef } from 'react'
-
 import { playlistDesktop } from '../components/PlaylistCard'
-
 import CardSwiperDestop from '../components/CardSwiperDestop'
 import Profil from '../components/Profil'
 import MusicList from '../components/MusicList'
@@ -20,39 +18,15 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Viewplaylist(props) {
-    const [recommand,setRecommand]=useState([])
-    const {popular,fetchData , musics} = useContext(ContextData);
+    const [recommand, setRecommand] = useState([])
+    const [name, setName] = useState('')
+    const {popular,fetchData,fetchData_all , musics} = useContext(ContextData);
 
-const song = [
-    {
-      id:1,
-      name: 'I am there for you',
-      url:'https://docs.google.com/uc?export=download&id=1Yi-9oUlk701ke6MQGvC9zYtokz-eAXVD',
-      artist:'Justin Beiber feat Alonzo'
-    },
-    {
-      id:2,
-      name: ' Memories',
-      url:'1ZNv6yydR8UhsrJUURXn2OidQ-QIrYi0K',
-      artist:'Marrons - track'
-    },
-     {
-      id:3,
-      name: 'The continent of the planet with the alphabet',
-      url:'https://docs.google.com/uc?export=download&id=1YdqVqia2368BAKh4xMAGHIRYWE8cEW9f',
-      artist:'tutu mimi'
-    }
-  ]
   const audioelm = useRef()
 
   const [music, setMusic] = useState([])
   const [isplaying, setIsplaying] = useState(false)
   const [currentSong, setCurrentSong] = useState({})
-
-
-    
-    
-  const [authRx, setAuthRx] = useState({})
 
     const authUserRedux = useSelector((state) => state.authenticate  )
     const [mobile, setmobile] = useState(false)
@@ -88,19 +62,9 @@ const song = [
 
     useEffect(() => {
 
-     
-        fetchData()
-        // fetchMusic()
-         const RetrieveMusic = async (id) => {
-            await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
-                .then((res) => { setMusic(res.data); })
-         }
-        // setCurrentSong(music[0])
-        FetchRecommand(id.playlist_id)
-        RetrieveMusic(id.playlist_id)
+        fetchData_all()
         getWindowsWidth()
-        console.log(id.playlist_id)
-        // setCurrentSong(music[0])
+        
         if (isplaying) {
             audioelm.current.play()
         } else {
@@ -109,7 +73,20 @@ const song = [
 
 
     }, [mobile, isplaying])
+
+    useEffect(() => {
+        const RetrieveMusic = async (id) => {
+            await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
+                .then((res) => { setMusic(res.data); })
+        }
+        RetrieveMusic(id.playlist_id)
+        FetchRecommand(id.playlist_id)
+        
+    },[id.playlist_id])
     
+
+    
+
   return (
      
           <div className=''>
@@ -154,7 +131,7 @@ const song = [
                               </>
                               : <>
                                   {/* <MusicList/> */}
-                                  <LoadPlay id={id.playlist_id} />
+                                  <LoadPlay id={id.playlist_id}  />
                                   z
                                   <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>

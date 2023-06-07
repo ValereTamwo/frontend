@@ -4,25 +4,36 @@ import arbre from '../images/arbre.jpg'
 import { useContext, useEffect, useState } from 'react'
 import { ContextData } from '../contexts/dataContext'
 import { pexels } from './data'
+import axios from 'axios'
 function LoadPlay(props) {
     const [data,setData]=useState({"index":5,"playlist_name":''})
-    let index = 5;
-    let playlist = {"playlist_name":""};
+    const [list,setList]=useState([])
+
     const { popular, fetchData_all } = useContext(ContextData);
     useEffect(() => {
-        fetchData_all();
-        if (props.id) {
+          const fetchplaylist_list = async () => {
+            await axios.get("http://localhost/Kmeans/allSong.php")
+                .then((res) => setList(res.data))
+                .then(() => {
+                    let name = list.find(list => list.playlist_id === props.id)
+                    // setData({...data,"playlist_name":name.playlist_name})
+                    setList([name])
+                    console.log(list)
+              })
+          }
+        fetchplaylist_list()
+    //     if (props.id) {
             
-            setData({...data});
+    //         setData({...data});
             
-        // {
-        //         "index":popular.findIndex(p => p.playlist_id === props.id),
-        //         "playlist_name": popular.filter(p => p.playlist_id === props.id)[0].playlist_name,
+    //     // {
+    //     //         "index":popular.findIndex(p => p.playlist_id === props.id),
+    //     //         "playlist_name": popular.filter(p => p.playlist_id === props.id)[0].playlist_name,
 
-        //     }
-        console.log(data);
+    //     //     }
+    //     console.log(data);
     
-    }
+    // }
     }, [])
     
     
@@ -39,7 +50,7 @@ function LoadPlay(props) {
                     </div>
                     <div className='col-9 p-3'>
                         <p className='text-light' style={{fontSize:'10px'}} >
-                            PLAYLIST
+                            PLAYLIST   
                         </p>
                         <p className='fw-bold text-light' style={{fontSize:'8vh'}}>
                             {data.playlist_name||props.name || 'Fresh Breeze'}
