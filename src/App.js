@@ -54,6 +54,7 @@ function App() {
         </Routes>
       </Provider>
       </BrowserRouter>
+      
   </DataProvider>      
   
   );

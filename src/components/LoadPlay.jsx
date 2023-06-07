@@ -13,13 +13,13 @@ function LoadPlay(props) {
         fetchData_all();
         if (props.id) {
             
-            setData({
-                "index":popular.findIndex(p => p.playlist_id === props.id),
-                "playlist_name": popular.filter(p => p.playlist_id === props.id)[0].playlist_name,
-
-            });
+            setData({...data});
             
-        
+        // {
+        //         "index":popular.findIndex(p => p.playlist_id === props.id),
+        //         "playlist_name": popular.filter(p => p.playlist_id === props.id)[0].playlist_name,
+
+        //     }
         console.log(data);
     
     }

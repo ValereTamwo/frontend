@@ -20,9 +20,8 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Viewplaylist(props) {
-
+    const [recommand,setRecommand]=useState([])
     const {popular,fetchData , musics} = useContext(ContextData);
-    const id = useParams()
 
 const song = [
     {
@@ -80,6 +79,13 @@ const song = [
         // console.log(currentSong)
     }
 
+    const FetchRecommand = async (id) => {
+            await axios.get(`http://localhost/Kmeans/KNN-PHP/recommand.php?id=${id}`)
+                .then((res) => { setRecommand(res.data); })
+                
+         }
+    const id = useParams()
+
     useEffect(() => {
 
      
@@ -90,6 +96,7 @@ const song = [
                 .then((res) => { setMusic(res.data); })
          }
         // setCurrentSong(music[0])
+        FetchRecommand(id.playlist_id)
         RetrieveMusic(id.playlist_id)
         getWindowsWidth()
         console.log(id.playlist_id)
@@ -151,7 +158,7 @@ const song = [
                                   z
                                   <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
-                                  <CardSwiperDestop data={popular} />          
+                                  <CardSwiperDestop data={recommand} />          
                                   </div>
                                   <p>{currentSong.track_id}</p>
                                   

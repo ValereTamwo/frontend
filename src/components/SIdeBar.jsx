@@ -78,9 +78,9 @@ function SIdeBar() {
                                     
                                 </div>
                         </div>   */}
-            <section class="offcanvas offcanvas-start bg-dark text-light" id="create">
-                <div class="offcanvas-header">
-                    <h2 class="offcanvas-title">Creer une playlist personnel</h2>
+            <section className="offcanvas offcanvas-start bg-dark text-light" id="create">
+                <div className="offcanvas-header">
+                    <h2 className="offcanvas-title">Creer une playlist personnel</h2>
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div className="offcanvas-body">

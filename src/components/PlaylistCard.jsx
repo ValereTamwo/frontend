@@ -17,8 +17,8 @@ import { Link } from 'react-router-dom';
 
 export function PlaylistCard({data,url}) {
     return (
-        <Link to={`/viewplaylist/${data.playlist_id}`} className='nav-link text-dark ' >
-            <div className='card text-light p-2 overflow-hidden' style={{ height: '230px',width:'170px' , backgroundColor:'#4d4c4c81'}}>
+        // <Link to={`/viewplaylist/${data.playlist_id}`} className='nav-link text-dark ' >
+            <div className='card text-light p-2 overflow-hidden' onClick={()=>{window.location.replace(`/viewplaylist/${data.playlist_id}`)}} style={{ height: '230px',width:'170px' , backgroundColor:'#4d4c4c81'}}>
           <img className='card-img-top' src={url} alt='' />
           <div className='card-body'>
                     <h6 className='card-title '>{ data.playlist_name}</h6>
@@ -28,7 +28,7 @@ export function PlaylistCard({data,url}) {
                     
           </div>
             </div>
-        </Link>
+        // </Link>
   )
   
 }
