@@ -32,7 +32,7 @@ function Player({currentSong,audio,isplaying,setIsplaying,songs,setCurrentSong})
     }
   return (
       <>
-          <div className='container text-light   fixed-bottom   ' style={{backgroundColor:'#333' ,left:'20vw'}}>
+          <div className=' text-light container   fixed-bottom   ' style={{backgroundColor:'#333' ,left:'20vw',zIndex:2}}>
               <div className='row'>
                   <div className='col-12  p-2'>
                       <span className='d-flex justify-content-center'>  {currentSong.track_name} : _ <span>{currentSong.track_artist}</span></span>

@@ -18,7 +18,7 @@ import { EffectCoverflow, Pagination } from "swiper";
 export default function CardSwiperDestop(props) {
   return (
     <>
-      <h3 className="text-light">Recommandes pour Valere Tamwo</h3>
+      <h3 className="text-light">Recommandes pour {JSON.parse(window.localStorage.getItem('sparkuser'))[0].username}</h3>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

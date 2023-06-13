@@ -79,9 +79,13 @@ function Viewplaylist(props) {
             await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
                 .then((res) => { setMusic(res.data); })
         }
+        const Save_Inter = async(user, playlist_id) => {
+            await axios.get(`http://localhost/Kmeans/save_inter.php?user=${user}&playlist_id=${playlist_id}`)
+            .then((res)=>{console.log(res.data)})
+        }
         RetrieveMusic(id.playlist_id)
         FetchRecommand(id.playlist_id)
-        
+        Save_Inter(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id,id.playlist_id)
     },[id.playlist_id])
     
 
@@ -100,9 +104,9 @@ function Viewplaylist(props) {
                   <div className='col-md-9 col-12'>
                       <div className='container-fluid p-2    mt-2'>
                           <div className=' col-12 col justify-content-end d-flex'>
-                          {
-                              authUserRedux.auth?<Profil/>:<LogBar />
-                          }
+                          
+                              <Profil/>
+                          
                       </div>
                       <div className='container mt-3'>
                         <div className='row'>

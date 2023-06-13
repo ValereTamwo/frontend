@@ -26,8 +26,8 @@ function LoadPlay(props) {
          if (props.id) {
             
              setData({
-                "index":popular.findIndex(p => p.playlist_id === props.id),
-                "playlist_name": popular.filter(p => p.playlist_id === props.id)[0].playlist_name,
+                "index":59,
+                "playlist_name": "Playlist "
 
               });
             
@@ -56,7 +56,7 @@ function LoadPlay(props) {
                         <p className='fw-bold text-light' style={{fontSize:'8vh'}}>
                             {data.playlist_name||props.name || 'Fresh Breeze'}
                         </p>
-                        <p className='text-light' style={{fontSize:'10px'}}>valere tamwo</p>
+                        <p className='text-light ' style={{ textTransform:'uppercase', fontSize: '10px' }}>{JSON.parse(window.localStorage.getItem('sparkuser'))[0].username}</p>
                     </div>
                 </div>
             </div>

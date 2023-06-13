@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import CreatePlaylistModal from './CreatePlaylistModal'
+import { useState,useRef } from 'react'
+import axios from 'axios'
 // import font from '../fonts/GothamBold.ttf'
 
 function SIdeBar() {
+    const name = useRef()
+    const [playlist, setPlaylist] = useState([]);
+    const user = JSON.parse(window.localStorage.getItem('sparkuser'))[0].id;
+     const QueryData = async (param) => {
+        await axios.get(`http://localhost/Kmeans/getplaylist.php?user=${param}`)
+            .then(response => setPlaylist(response.data))
+            .then(() => {
+            
+            console.log(playlist)
+        })
+     };
+    //  const Create_playlist = async (user,name) => {
+    //     await axios.get(`http://localhost/Kmeans/create_playlist.php?user=${user}?nom=${name}`)
+    //         .then(response => setPlaylist(response.data))
+    //         .then(() => {
+            
+    //         console.log(playlist)
+    //     })
+    // };
+    useEffect(() => {
+        QueryData(user)      
+    },[]);
     return (
         <>
                     
-            <div className='  w-20  w-md-100   sticky-top p-3' style={{ height: '100vh', backgroundColor: 'black',width:'300px' }}>
+            <div className='  w-20  w-md-100  collapse d-md-block sticky-top p-3' style={{ height: '100vh', backgroundColor: 'black',width:'95%' ,zIndex:3}}>
                 <div className='container'>
                     <span className='w-100 h-100 p-2 bg-white rounded-circle me-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
@@ -87,7 +110,7 @@ function SIdeBar() {
                     <form>
                         <div className="mb-3">
                             <label for="username" className="form-label">Nom de la playlist</label>
-                            <input type="text" className="form-control" name="username" id="username"/>
+                            <input type="text" ref={name} className="form-control" name="username" id="username"/>
                         </div>
                         <div className='mb-3'>
                             <label for="username" className="form-label">Upload Cover picture</label>
@@ -96,7 +119,10 @@ function SIdeBar() {
                         <div className="mt-4">
                             <label for="username" className="form-label "></label>
                             
-                         <button  className="btn  btn-light">Creer</button> 
+                         <button onClick={(event)=>{
+                            event.preventDefault();
+                            // Create_playlist(user,name)
+                         }}  className="btn  btn-light">Creer</button> 
                             
                         </div>
                         

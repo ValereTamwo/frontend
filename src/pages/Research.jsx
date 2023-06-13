@@ -49,6 +49,7 @@ function Research(props) {
     }
 
     useEffect(() => {
+         
         getWindowsWidth()
         fetchData_all()
     },[mobile])
@@ -65,9 +66,9 @@ function Research(props) {
                   <div className='col-md-9 col-12'>
                       <div className='container-fluid p-2    mt-2'>
                           <div className=' col-12 col justify-content-end d-flex'>
-                          {
-                              authUserRedux.auth?<Profil/>:<LogBar />
-                          }
+                          
+                            <Profil/>
+                          
                       </div>
                       <div className='container mt-3'>
                         <div className='row'>

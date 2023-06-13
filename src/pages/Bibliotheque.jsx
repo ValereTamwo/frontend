@@ -12,12 +12,13 @@ import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import { ContextData } from '../contexts/dataContext'
 import { useContext } from 'react'
+import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
 function Bibliotheque(props) {
 
     const {popular,fetchData,fetchData_all } = useContext(ContextData);
 
-  const [authRx, setAuthRx] = useState({})
+  const [recent, setRecent] = useState([])
 
     const authUserRedux = useSelector((state) => state.authenticate  )
     const [mobile, setmobile] = useState(false)
@@ -29,6 +30,12 @@ function Bibliotheque(props) {
         }
     }
     useEffect(() => {
+        const Fetch_recent_playlist = async (id) => {
+            await axios.get(`http://localhost/Kmeans/send_inter.php?user=${id}`)
+                .then((res) => { setRecent(res.data); })
+                
+            }
+        Fetch_recent_playlist(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id)
         fetchData()
         getWindowsWidth()
     },[mobile])
@@ -45,9 +52,8 @@ function Bibliotheque(props) {
                   <div className='col-md-9 col-12'>
                       <div className='container-fluid p-2    mt-2'>
                           <div className=' col-12 col justify-content-end d-flex'>
-                          {
-                              authUserRedux.auth?<Profil/>:<LogBar />
-                          }
+                          <Profil/>
+                          
                       </div>
                       <div className='container mt-3'>
                         <div className='row'>
@@ -61,7 +67,7 @@ function Bibliotheque(props) {
                               <>
                                   <div className='d-flex flex-column gap-5'>
                                   <LoadPlay name={'Ta Bibliotheque Personnalisee' } />
-                                      <MusicList title={'tes hits Recents'} data={popular} />
+                                      <MusicList title={'tes hits Recents'} data={recent} />
                                        <MusicList title={'Albums par Artistes Ecoutes'} data={popular} />
                                     <PlaylistCard />
                                   
@@ -70,7 +76,7 @@ function Bibliotheque(props) {
                               </>
                               : <>
                                   <LoadPlay name={'Ta Bibliotheque Personnalisee' }  />
-                                  <MusicList title={'Tes Hits Recents'} data={popular}/>
+                                  <MusicList title={'Tes Hits Recents'} data={recent}/>
                                 <MusicList title={'Albums par Artistes Ecoutes'} data={popular}/>
                                   
                                   {/* <CardSwiperDestop data={popular} /> */}

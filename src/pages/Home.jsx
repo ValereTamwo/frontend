@@ -12,17 +12,24 @@ import { Image } from '../components/ArtistList'
 import axios from 'axios'
 import { ContextData } from '../contexts/dataContext'
 import { useContext } from 'react'
-
-
+import Custom from '../components/Custom'
+// import { PlaylistCard } from '../components/PlaylistCard'
 function Home(props) {
 
-    const {popular,fetchData} = useContext(ContextData);
-
+    const { popular, fetchData } = useContext(ContextData);
+    const [recommand, setRecommand] = useState([])
+    const [user, setUser] = useState([]);
     const res = Image()
     const pexel_api = "emiNERkoveUChvp9jEmCKVs68PDTfHhF50IY9m4ZmWOKWhuDCHU9r2vI"
     const [token, setToken] = useState('');
     const [mobile, setmobile] = useState(false)
-     
+    const  url= "https://images.pexels.com/photos/4090902/pexels-photo-4090902.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"  
+    const data = {
+        "playlist_name": "Custom Mix Plalist  ",
+        "nb_track": "Unknown",
+        "playlist_subgenre": "Mix",
+         "playlist_id":JSON.parse(window.localStorage.getItem('sparkuser'))[0].id     
+    }
 
 
     function getWindowsWidth() {
@@ -31,10 +38,19 @@ function Home(props) {
             setmobile(true);
         }
     }   
+    
  
     useEffect(() => {
         getWindowsWidth() 
         fetchData()
+
+        const Fetch_recent_playlist = async (id) => {
+        await axios.get(`http://localhost/Kmeans/KNN-PHP/Inter_Recommand.php?user=${id}`)
+            .then((res) => { setRecommand(res.data); })
+            
+        }
+        Fetch_recent_playlist(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id)
+
         console.log(popular)
     },[mobile])
   
@@ -51,9 +67,7 @@ function Home(props) {
                   <div className='col-md-9 col-12'>
                       <div className='container-fluid p-2    mt-2'>
                           <div className=' col-12 col justify-content-end d-flex'>
-                          {
-                              token?<Profil/>:<LogBar />
-                          }
+                          <Profil />                    
                       </div>
                       <div className='container mt-3'>
                         <div className='row'>
@@ -140,8 +154,9 @@ function Home(props) {
                                       </div>
                                       
                                   </div>
-                                  <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular}/>
-                                  <CardSwiperDestop data={popular} />
+                                  {/* <Custom data={data} url={url} /> */}
+                                  <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular} />
+                                  <CardSwiperDestop data={recommand} />
                                   {/* <Player/> */}
                                   {/* <LoadPlay/> */}
                               </>
