@@ -65,10 +65,14 @@ function Home(props) {
                      
                   </div>
                   <div className='col-md-9 col-12'>
-                      <div className='container-fluid p-2    mt-2'>
+                  <div className='container-fluid p-2    mt-2'>
+                      <div className=' col-4  bg-warning d-flex items-center rounded ' style={{height:'100%',width:'35vw' ,fontSize:'14px', padding:'5px'}} >
+                          <span className='badge badge-info'>Info</span>
+                          <span className=''>Ce Projet s'inscrit dans un cardre purement academiques , Nous n'avons aucun droit sur les chansons qui y sont jouees </span>
+                        </div>
                           <div className=' col-12 col justify-content-end d-flex'>
                           <Profil />                    
-                      </div>
+                         </div>
                       <div className='container mt-3'>
                         <div className='row'>
                            { mobile? <NavMobile/>:<></>}
@@ -117,7 +121,7 @@ function Home(props) {
                                 
                               </>
                               : <>
-                                   <div className='container mb-5'>
+                                   <div className='container mb-md-5 mb-4'>
                                             <span className='w-100 h-100 p-2  rounded-circle me-2' style={{backgroundColor:'#FEF49B'}}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="#FEDC47" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
                                                     <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"/>
@@ -147,14 +151,14 @@ function Home(props) {
                                                           
                                                       </div>
                                                   </div>
-                                                  <span className='d-flex justify-content-center' style={{ fontSize:'30px',color:'#FFF480'}}>Venez vibrer au rythme de la musique </span>
+                                                  <span className='d-flex justify-content-center ' style={{ fontSize:'30px',color:'#FFF480'}}>Venez vibrer au rythme de la musique </span>
                                                   
                                               </dif>
                                           </div>
                                       </div>
                                       
                                   </div>
-                                  {/* <Custom data={data} url={url} /> */}
+                                 {/* <Custom data={data} url={url} />  */}
                                   <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular} />
                                   <CardSwiperDestop data={recommand} />
                                   {/* <Player/> */}

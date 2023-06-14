@@ -1,6 +1,6 @@
 import React from 'react'
 import { PlaylistCard } from './PlaylistCard'
-function Custom({ data,url}) {
+function Custom({data,url}) {
   return (
     <section>
     <h4 className='text-light index'>
