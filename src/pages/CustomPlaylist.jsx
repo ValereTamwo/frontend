@@ -1,13 +1,10 @@
 import React from 'react'
-import LogBar from '../components/LogBar'
 import NavMobile from '../components/NavMobile'
 import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
 import { useState,useEffect,useRef } from 'react'
-import { playlistDesktop } from '../components/PlaylistCard'
 import CardSwiperDestop from '../components/CardSwiperDestop'
 import Profil from '../components/Profil'
-import MusicList from '../components/MusicList'
 import LoadPlay from '../components/LoadPlay'
 import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
@@ -17,9 +14,7 @@ import { ContextData } from '../contexts/dataContext'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 // import cardSwiperMobile from '../components/cardswiperMobile'
-function Viewplaylist(props) {
-    const [recommand, setRecommand] = useState([])
-    const [name, setName] = useState('')
+function CustomPlaylist(props) {
     const {popular,fetchData,fetchData_all , musics} = useContext(ContextData);
 
   const audioelm = useRef()
@@ -28,7 +23,6 @@ function Viewplaylist(props) {
   const [isplaying, setIsplaying] = useState(false)
   const [currentSong, setCurrentSong] = useState({})
 
-    const authUserRedux = useSelector((state) => state.authenticate  )
     const [mobile, setmobile] = useState(false)
 
     function getWindowsWidth() {
@@ -38,12 +32,6 @@ function Viewplaylist(props) {
         }
       
     }
-
-    const Save_Hit = async(user, idmusic) => {
-        await axios.get(`http://localhost/Kmeans/save_hit.php?user=${user}&idmusic=${idmusic}`)
-        .then((res)=>{console.log(res.data)})
-    }
-
 
     const onPlaying = () => {
         const duration = audioelm.current.duration;
@@ -57,16 +45,9 @@ function Viewplaylist(props) {
             setTimeout(()=>{setIsplaying(true)},200)
 
             // On va faire une requete ici pour insere la musique acheve dans la bd et faire des recommandations personnalisee avev
-            Save_Hit(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id,currentSong.track_id)
         }
         // console.log(currentSong)
     }
-
-    const FetchRecommand = async (id) => {
-            await axios.get(`http://localhost/Kmeans/KNN-PHP/recommand.php?id=${id}`)
-                .then((res) => { setRecommand(res.data); })
-                
-         }
     const id = useParams()
 
     useEffect(() => {
@@ -88,14 +69,9 @@ function Viewplaylist(props) {
             await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
                 .then((res) => { setMusic(res.data); })
         }
-        const Save_Inter = async(user, playlist_id) => {
-            await axios.get(`http://localhost/Kmeans/save_inter.php?user=${user}&playlist_id=${playlist_id}`)
-            .then((res)=>{console.log(res.data)})
-        }
 
         RetrieveMusic(id.playlist_id)
-        FetchRecommand(id.playlist_id)
-        Save_Inter(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id,id.playlist_id)
+        // FetchRecommand(id.playlist_id)
     },[id.playlist_id])
     
 
@@ -145,11 +121,11 @@ function Viewplaylist(props) {
                               </>
                               : <>
                                   {/* <MusicList/> */}
-                                  <LoadPlay id={id.playlist_id}  />
-                                  z
+                                  <LoadPlay id={id.playlist_id}  mix = {'Mon Mix Personnel' }/>
+                                  
                                   <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>
-                                  <CardSwiperDestop data={recommand} />          
+                         
                                   </div>
                                   <p>{currentSong.track_id}</p>
                                   
@@ -168,4 +144,4 @@ function Viewplaylist(props) {
 
 }
 
-export default Viewplaylist
+export default CustomPlaylist

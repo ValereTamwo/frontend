@@ -16,6 +16,7 @@ import "./styles.css";
 import { EffectCoverflow, Pagination } from "swiper";
 
 export default function CardSwiperDestop(props) {
+  const {data} = props;
   return (
     <>
       <h3 className="text-light">Recommandes pour {JSON.parse(window.localStorage.getItem('sparkuser'))[0].username}</h3>
@@ -36,7 +37,7 @@ export default function CardSwiperDestop(props) {
         className="mySwiper"
       >
         {
-          props.data.map((item,index) => {
+          data.map((item,index) => {
             return (
               <>
                 <SwiperSlide key={index}> 

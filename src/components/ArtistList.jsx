@@ -50,15 +50,15 @@ function ArtistList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={ariana} alt='ariana grande' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={halsey} alt='halsey' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={maroon} alt='maroons' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={zara} alt='Zara Larson' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={ed} alt='Ed Sheran' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={catty} alt='Catty perry' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid'/></SwiperSlide>
-        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid'/></SwiperSlide>
+        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={ariana} alt='ariana grande' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={halsey} alt='halsey' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={maroon} alt='maroons' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={zara} alt='Zara Larson' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={ed} alt='Ed Sheran' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={catty} alt='Catty perry' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid hover_img'/></SwiperSlide>
+        <SwiperSlide><img src={justin} alt='justin beiber' className='img-fluid hover_img'/></SwiperSlide>
       </Swiper>
     </>
   )

@@ -14,6 +14,7 @@ import { ContextData } from '../contexts/dataContext'
 import { useContext } from 'react'
 import Custom from '../components/Custom'
 // import { PlaylistCard } from '../components/PlaylistCard'
+import CustomCard from '../components/CustomCard'
 function Home(props) {
 
     const { popular, fetchData } = useContext(ContextData);
@@ -66,7 +67,7 @@ function Home(props) {
                   </div>
                   <div className='col-md-9 col-12'>
                   <div className='container-fluid p-2    mt-2'>
-                      <div className=' col-4  bg-warning d-flex items-center rounded ' style={{height:'100%',width:'35vw' ,fontSize:'14px', padding:'5px'}} >
+                      <div className=' col-4  bg-warning d-flex items-center rounded ' style={{ height: '100%', width: '35vw', fontSize: '14px', padding: '5px', borderStyle:'double', borderColor:'white' , borderWidth:'3px' }} >
                           <span className='badge badge-info'>Info</span>
                           <span className=''>Ce Projet s'inscrit dans un cardre purement academiques , Nous n'avons aucun droit sur les chansons qui y sont jouees </span>
                         </div>
@@ -158,9 +159,9 @@ function Home(props) {
                                       </div>
                                       
                                   </div>
-                                 {/* <Custom data={data} url={url} />  */}
+                                 <CustomCard/>
                                   <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular} />
-                                  <CardSwiperDestop data={recommand} />
+                                  <CardSwiperDestop data={recommand} /> 
                                   {/* <Player/> */}
                                   {/* <LoadPlay/> */}
                               </>

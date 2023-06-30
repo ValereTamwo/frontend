@@ -51,7 +51,7 @@ function LoadPlay(props) {
                     </div>
                     <div className='col-9 p-3'>
                         <p className='text-light' style={{fontSize:'10px'}} >
-                            PLAYLIST   
+                            {'PLAYLIST' || props.mix}
                         </p>
                         <p className='fw-bold text-light' style={{fontSize:'8vh'}}>
                             {data.playlist_name||props.name || 'Fresh Breeze'}

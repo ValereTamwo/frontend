@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState , useRef} from 'react'
+import { useState, useRef } from 'react'
 import axios from 'axios'
+import Google_Auth from '../components/Google_Auth'
 function SignIn() {
 
   const name = useRef()
@@ -58,7 +59,14 @@ function SignIn() {
                             
                     <div className='mb-3 d-flex justify-content-end'>
                       <button type='submit' className='btn btn-light' >Envoyer</button>
-                    </div>
+                      </div>
+                      <div className='justify-center d-flex' >
+                        Or
+                      </div>
+                      <div>
+                         <Google_Auth/>
+                      </div>
+                      
                   </form>
                 </div>
                 </>
@@ -109,14 +117,18 @@ function SignIn() {
                   </div>
                           
                   <div className='mb-3 d-flex justify-content-end'>
-                      <button type='submit' className={'btn btn-light'}
+                      <button type='submit' className={'btn btn-warning'}
                         onClick={(event) => { 
                           event.preventDefault();
                           QueryData(name.current.value, passC.current.value, email.current.value, status.current.value);
                         }} >
                         Envoyer
                       </button>
-                  </div>
+                    </div>
+                    <div className='justify-center d-flex' >
+                        Or
+                      </div>
+                    <Google_Auth/>
                 </form>
               </div>
               }

@@ -74,3 +74,23 @@
 .swiper-slide:nth-child(10n) {
   background-color: rgb(54, 94, 77);
 }
+
+.hover_effect:hover{
+    transition-duration: 0.2s;
+    transition-delay: 0.2s;
+    transform: scale(1.2);
+    transition-timing-function: ease;
+
+}
+
+nav-hover:hover{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(48, 47, 47, 0.589);
+  border: 1px;
+  border-color: white;
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
