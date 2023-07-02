@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { pexels } from "./data";
 // Import Swiper styles

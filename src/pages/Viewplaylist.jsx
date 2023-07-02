@@ -16,7 +16,7 @@ import { useContext } from 'react'
 import { ContextData } from '../contexts/dataContext'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-// import cardSwiperMobile from '../components/cardswiperMobile'
+import playlist from '../components/playlist.json'
 function Viewplaylist(props) {
     const [recommand, setRecommand] = useState([])
     const [name, setName] = useState('')
@@ -81,7 +81,7 @@ function Viewplaylist(props) {
         }
 
 
-    }, [mobile, isplaying])
+    }, [mobile, isplaying,id.playlist_id])
 
     useEffect(() => {
         const RetrieveMusic = async (id) => {
@@ -98,9 +98,7 @@ function Viewplaylist(props) {
         Save_Inter(JSON.parse(window.localStorage.getItem('sparkuser'))[0].id,id.playlist_id)
     },[id.playlist_id])
     
-
-    
-
+    const pl = playlist[2].data.find((song) => song.playlist_id === id.playlist_id).playlist_name;
   return (
      
           <div className=''>
@@ -145,7 +143,7 @@ function Viewplaylist(props) {
                               </>
                               : <>
                                   {/* <MusicList/> */}
-                                  <LoadPlay id={id.playlist_id}  />
+                                  <LoadPlay id={id.playlist_id} name={pl} />
                                   z
                                   <MusicTable music={music} track={id.track_id} isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong} />
                                   <div className='' style={{ marginBottom:'100px'}}>

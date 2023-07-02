@@ -1,21 +1,14 @@
 import React from 'react'
 import NavMobile from '../components/NavMobile'
-import PlaylistCard from '../components/PlaylistCard'
 import SIdeBar from '../components/SIdeBar'
 import { useState,useEffect,useRef } from 'react'
-import CardSwiperDestop from '../components/CardSwiperDestop'
 import Profil from '../components/Profil'
 import LoadPlay from '../components/LoadPlay'
-import { useSelector } from 'react-redux'
 import MusicTable from '../components/MusicTable'
 import Player from '../components/Player'
-import { useContext } from 'react'
-import { ContextData } from '../contexts/dataContext'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-// import cardSwiperMobile from '../components/cardswiperMobile'
 function CustomPlaylist(props) {
-    const {popular,fetchData,fetchData_all , musics} = useContext(ContextData);
 
   const audioelm = useRef()
 
@@ -52,7 +45,6 @@ function CustomPlaylist(props) {
 
     useEffect(() => {
 
-        fetchData_all()
         getWindowsWidth()
         
         if (isplaying) {
@@ -65,18 +57,18 @@ function CustomPlaylist(props) {
     }, [mobile, isplaying])
 
     useEffect(() => {
-        const RetrieveMusic = async (id) => {
-            await axios.get(`http://localhost/Kmeans/musiclist.php?id="${id}"`)
-                .then((res) => { setMusic(res.data); })
-        }
+        console.log('valere est cool')
+        axios.get(`http://localhost/Kmeans/KNN-PHP/r_music.php?user=${id.id}`)
+            .then((res) => {
+                console.log(res.data);
+                setMusic(res.data);
+                console.log(id.id)
 
-        RetrieveMusic(id.playlist_id)
-        // FetchRecommand(id.playlist_id)
-    },[id.playlist_id])
+            })
+    },[id.id])
     
 
     
-
   return (
      
           <div className=''>
@@ -101,25 +93,7 @@ function CustomPlaylist(props) {
                     </div>
                   </div>
                   <div className=''>
-                      {
-                          mobile ?
-                              <>
-                                  <div className='d-flex flex-column gap-5'>
-                                      
-                                      {/* <MusicList /> */}
-                                      <LoadPlay />
-                                      <MusicTable music={music}  isplaying={isplaying} setIsplaying={setIsplaying}  setCurrentSong={setCurrentSong}/>
-                                      <PlaylistCard />
-                                  {/* <audio src={currentSong.url} ref={audioelm} onTimeUpdate={onPlaying} /> */}
-                                      
-                                  {/* <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} /> */}
-                                    
-                                </div>
-                                    <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.track_id}`} ref={audioelm} onTimeUpdate={onPlaying} />
-                                    <Player songs={music} setCurrentSong={setCurrentSong} setSong ={setMusic}  isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm} />
-                                  
-                              </>
-                              : <>
+                      
                                   {/* <MusicList/> */}
                                   <LoadPlay id={id.playlist_id}  mix = {'Mon Mix Personnel' }/>
                                   
@@ -131,9 +105,7 @@ function CustomPlaylist(props) {
                                   
                                   <audio src={`https://docs.google.com/uc?export=download&id=${currentSong.id }`} ref={audioelm} onTimeUpdate={onPlaying} />
                                   <Player songs={music} setCurrentSong={setCurrentSong} setSong={setMusic} isplaying={isplaying} setIsplaying={setIsplaying} currentSong={currentSong} audio={audioelm}      />
-                              </>
-                      }
-                      
+                    
                   </div>
                   
                   </div>

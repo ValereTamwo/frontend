@@ -161,7 +161,7 @@ function Home(props) {
                                   </div>
                                  <CustomCard/>
                                   <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular} />
-                                  <CardSwiperDestop data={recommand} /> 
+                                  <CardSwiperDestop data={recommand} />  
                                   {/* <Player/> */}
                                   {/* <LoadPlay/> */}
                               </>

@@ -47,14 +47,14 @@ function LoadPlay(props) {
             <div className='container-fluid border-bottom border-light border-1 mb-2 '>
                 <div className='row'>
                     <div className='col-3 p-2'>
-                        <img className='img-fluid' src={pexels[data.index].src.tiny || arbre}  alt='playlist'/>
+                        <img className='img-fluid' src={props.name? pexels[data.index].src.tiny || arbre:"https://images.pexels.com/photos/2403054/pexels-photo-2403054.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"}  alt='playlist'/>
                     </div>
                     <div className='col-9 p-3'>
                         <p className='text-light' style={{fontSize:'10px'}} >
                             {'PLAYLIST' || props.mix}
                         </p>
                         <p className='fw-bold text-light' style={{fontSize:'8vh'}}>
-                            {data.playlist_name||props.name || 'Fresh Breeze'}
+                            {props.name || 'Mon Mix Perso 😎️😎️'}
                         </p>
                         <p className='text-light ' style={{ textTransform:'uppercase', fontSize: '10px' }}>{JSON.parse(window.localStorage.getItem('sparkuser'))[0].username}</p>
                     </div>
