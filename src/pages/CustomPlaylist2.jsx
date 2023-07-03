@@ -8,7 +8,7 @@ import MusicTable from '../components/MusicTable'
 import Player from '../components/Player'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-function CustomPlaylist(props) {
+function CustomPlaylist2(props) {
 
   const audioelm = useRef()
 
@@ -58,22 +58,14 @@ function CustomPlaylist(props) {
 
     useEffect(() => {
         console.log('valere est cool')
-        axios.get(`http://localhost/Kmeans/KNN-PHP/r_music.php?user=${id.id}`)
+        axios.get(`http://localhost/Kmeans/KNN-PHP/nmf_music.php?user=${id.id}`)
             .then((res) => {
                 console.log(res.data);
-                function comparerAleatoire() {
-                 return Math.random() - 0.5;
-                }
-
-// Mélange aléatoire du tableau
-                res.data.sort(comparerAleatoire);
-                setMusic(res.data);
+                setMusic(res.data.slice(0,10));
                 console.log(id.id)
 
             })
     },[id.id])
-    
-
     
   return (
      
@@ -122,4 +114,4 @@ function CustomPlaylist(props) {
 
 }
 
-export default CustomPlaylist
+export default CustomPlaylist2

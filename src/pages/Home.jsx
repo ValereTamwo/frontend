@@ -159,7 +159,11 @@ function Home(props) {
                                       </div>
                                       
                                   </div>
-                                 <CustomCard/>
+                                  <div className='d-flex gap-1'>
+                                      <CustomCard id={1} />
+                                      <CustomCard id={2} />
+                                  </div>
+                                  
                                   <MusicList title={'Decouvrez les hits du tendance du moment'} data={popular} />
                                   <CardSwiperDestop data={recommand} />  
                                   {/* <Player/> */}

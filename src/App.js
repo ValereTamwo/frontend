@@ -10,7 +10,7 @@ import { BrowserRouter,Routes,route, Route, Router } from 'react-router-dom';
 import Research from './pages/Research';
 import DataProvider from './contexts/dataContext';
 import CustomPlaylist from './pages/CustomPlaylist';
-
+import CustomPlaylist2 from './pages/CustomPlaylist2';
 function App() {
 
   //  const [tasks, setTask] = useState([])
@@ -51,7 +51,8 @@ function App() {
           <Route exact path='/viewplaylist/:playlist_id/:track_id?' element={<Viewplaylist />}></Route>
           <Route exact path='/research' element={<Research />}></Route>
             <Route exact path='/signIn' element={<SignIn />}></Route>
-            <Route exact path='/mix/:id' element={<CustomPlaylist/>} ></Route> 
+            <Route exact path='/mix1/:id' element={<CustomPlaylist/>} ></Route> 
+            <Route exact path='/mix2/:id' element={<CustomPlaylist2/>} ></Route> 
 
         </Routes>
       </Provider>
